@@ -15,6 +15,10 @@ app.use("/", homeRoutes);
 app.use("/recipes", recipeRoutes);
 app.use(express.static("public"));
 
+app.use((req,res)=>{
+  res.status(404).send("Page not found <a href='/'>Go Home</a>")
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`App listening on port http://localhost:${port}`)
